@@ -1,0 +1,30 @@
+	.app {
+		width: 22px;
+    	height: 22px;
+    	background: url(../../assets/icon/app_normal.svg) center center /  21px 21px no-repeat 
+	}
+	.app1{
+		width: 22px;
+    	height: 22px;
+    	background: url(../../assets/icon/app_on.svg) center center /  21px 21px no-repeat
+	}
+	.message{
+		width: 22px;
+    	height: 22px;
+    	background: url(../../assets/icon/底部操作栏icon-news-normal.svg) center center /  21px 21px no-repeat
+	}
+	.message1{
+		width: 22px;
+    	height: 22px;
+    	background: url(../../assets/icon/底部操作栏icon-news-on.svg) center center /  21px 21px no-repeat
+	}
+	.my{
+		width: 22px;
+    	height: 22px;
+    	background: url(../../assets/icon/底部操作栏icon-mine-normal.svg) center center /  21px 21px no-repeat
+	}
+	.my1{
+		width: 22px;
+    	height: 22px;
+    	background: url(../../assets/icon/底部操作栏icon-mine-on.svg) center center /  21px 21px no-repeat
+	}

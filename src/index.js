@@ -1,7 +1,7 @@
 import 'babel-polyfill'
 import dva from 'dva'
 import { createHashHistory as createHistory } from 'history'
-import { message } from 'antd'
+import { Toast } from 'antd-mobile'
 import model from './modules/common/app'
 import router from './routes'
 
@@ -9,7 +9,7 @@ import router from './routes'
 const app = dva({
     history: createHistory(),
     onError(err) {
-        message.error(err.message)
+        Toast.fail(err.message, 1)
     },
 });
 
