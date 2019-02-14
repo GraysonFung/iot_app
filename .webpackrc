@@ -1,0 +1,11 @@
+{
+	"extraBabelPlugins": [
+    	["import", { "libraryName": "antd-mobile", "style": true }]
+	],
+	"disableCSSModules":false,
+	"theme":{
+    	"brand-primary":"#982837",
+    	"color-text-base":"#333333"
+  	}
+
+}
