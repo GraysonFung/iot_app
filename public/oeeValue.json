@@ -1,0 +1,21 @@
+{
+    "onTime":480,
+    "offTime":20,         
+    "beat":1.25,  
+
+    "offPlanTime":"",
+    "beatPlan":"",    
+    "output":"",
+    
+    
+    "goodNums":"",
+
+    "runPlanTime":"",
+    "runTime":"",
+    "preRunRatio":"",
+    "runRatio":"",
+    "beatRatio":"",
+    "preRunPlanRatio":"",
+    "goodNumsRatio":"",
+    "deviceMultipleRunRatio":""
+}

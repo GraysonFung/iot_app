@@ -27,7 +27,7 @@ export default {
           dispatch({ type: 'updateState', payload: { openKeys: [] }})
         }
         // 检测登录状态
-        dispatch({ type: 'isLogin', payload: { location }})
+        // dispatch({ type: 'isLogin', payload: { location }})
       })
     },
     // setup({ dispatch }) {

@@ -1,0 +1,30 @@
+:global(.placeholder) {
+  background-color: #ebebef;
+  color: #bbb;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+  width: 100%;
+}
+.register {
+	text-align:center;
+	width:80px;
+	color:#888;
+}
+.inputItem {
+	background-color: rgba(255,255,255,0.2)
+}
+.myLogin{
+	:global(.am-list-body){
+		background-color: rgba(255,255,255,0.1)
+	}
+	:global(.am-list-item){
+		background-color: rgba(255,255,255,0)
+	};
+	:global(.am-list-body::before){
+		height:0 !important
+	}
+	:global(.am-list-body::after){
+		height:0 !important
+	}
+}

@@ -2,9 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1, minimum-scale=1">
   <title>Dva Demo</title>
   <link rel="stylesheet" href="index.css" />
+  <script type="text/javascript">
+    document.documentElement.style.fontSize = document.documentElement.clientWidth / 360*100 + 'px';
+    document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady() {
+      console.log(navigator.camera);
+    }
+</script>
 </head>
 <body>
 

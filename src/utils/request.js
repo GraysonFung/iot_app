@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { message } from 'antd'
+import { Toast } from 'antd-mobile'
 import getDeepValue from './getDeepValue'
 import config from '../config'
 
@@ -117,11 +117,11 @@ async function request(option) {
   }
 
   if (result.success && successTip) {
-    message.success(label + '成功！')
+    Toast.success(label + '成功！')
   }
 
   if (!result.success && errorTip) {
-    message.error(label + '失败: ' + (result.message || '请稍后重试~'))
+    Toast.fail(label + '失败: ' + (result.message || '请稍后重试~'))
   }
 
   return result
