@@ -32,11 +32,11 @@ const data = [{
 
 
 
-class equipMaintenance extends React.Component {
+class DeviceMaintenance extends React.Component {
 
   	componentDidMount(){
           this.props.dispatch({
-               type:'equipmentMaintenance/updateState',
+               type:'deviceMaintenance/updateState',
                payload:{
                     files:data,
                     modalImg:'',
@@ -49,14 +49,14 @@ class equipMaintenance extends React.Component {
      onChange = (files, type, index) => {
           console.log(files, type, index);
           this.props.dispatch({
-               type:'equipmentMaintenance/updateState',
+               type:'deviceMaintenance/updateState',
                payload:{files}
           });
       };
      onImageClick= (index, fs) => {
           console.log('onImageClick',index,fs)
           this.props.dispatch({
-               type:'equipmentMaintenance/updateState',
+               type:'deviceMaintenance/updateState',
                payload:{
                     modalImg: fs[index].url,
                     modalVisible:true  
@@ -65,7 +65,7 @@ class equipMaintenance extends React.Component {
      }
      closeModal=()=>{
           this.props.dispatch({
-               type:'equipmentMaintenance/updateState',
+               type:'deviceMaintenance/updateState',
                payload:{
                     modalVisible:false  
                }
@@ -78,7 +78,7 @@ class equipMaintenance extends React.Component {
           //           onPress: () => {
           //                cordovaCamera.takePicture().then((res)=>{
           //                     this.props.dispatch({
-          //                          type:'equipmentMaintenance/addToFiles',
+          //                          type:'deviceMaintenance/addToFiles',
           //                          payload:{
           //                               file: ({
           //                                    url: res,
@@ -94,7 +94,7 @@ class equipMaintenance extends React.Component {
           //           onPress: () => {
           //                cordovaCamera.openAlbum().then((res)=>{
           //                     this.props.dispatch({
-          //                          type:'equipmentMaintenance/addToFiles',
+          //                          type:'deviceMaintenance/addToFiles',
           //                          payload:{
           //                               file: ({
           //                                    url: res,
@@ -114,7 +114,7 @@ class equipMaintenance extends React.Component {
 	render(){
           // console.log(this.props)
           const { getFieldProps } = this.props.form;
-          const {files,modalVisible,modalImg}=this.props.equipmentMaintenance
+          const {files,modalVisible,modalImg}=this.props.deviceMaintenance
 
           const tabs = [
           { title: <Badge >要点</Badge> },
@@ -294,4 +294,4 @@ class equipMaintenance extends React.Component {
 
 
 
-export default (connect(({equipmentMaintenance})=>({equipmentMaintenance}))(createForm()(equipMaintenance)));
+export default (connect(({deviceMaintenance})=>({deviceMaintenance}))(createForm()(DeviceMaintenance)));

@@ -1,12 +1,12 @@
 import modelExtend from 'dva-model-extend'
 import {model} from '../../common/common'
-import getDeviceAlert from '../../../services'
+
 
 
 
 export default modelExtend(model,{
 
-  namespace: 'equipmentMaintenance',
+  namespace: 'deviceMaintenance',
 
   state: {
     files:[]

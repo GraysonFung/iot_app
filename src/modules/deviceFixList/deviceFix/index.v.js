@@ -17,7 +17,7 @@ const Item = List.Item;
 const Brief = Item.Brief;
 
 
-class equipmentFix extends React.Component {
+class DeviceFix extends React.Component {
   	componentDidMount(){
           
 
@@ -27,7 +27,7 @@ class equipmentFix extends React.Component {
           { title: <Badge >问题</Badge> },
           { title: <Badge >结果</Badge> }
           ];
-          const equipmentFix={
+          const deviceFix={
                Items1:[
                     {id:1,label:'报警',name:'来源'},
                     {id:2,label:'2019.1.1',name:'时间'},
@@ -43,14 +43,14 @@ class equipmentFix extends React.Component {
 
           }
 
-          const Items1=equipmentFix.Items1.map((item,index)=>{
+          const Items1=deviceFix.Items1.map((item,index)=>{
                return(
                          <Item key={item.id} onChange={() =>{}} wrap>
                          {item.name}：<br/>{item.label}
                          </Item>
                     )
           })
-          const Items2=equipmentFix.Items2.map((item,index)=>{
+          const Items2=deviceFix.Items2.map((item,index)=>{
                return(
                          <Item key={item.id} onChange={() =>{}} wrap>
                          {item.name}：<br/>{item.label}
@@ -87,16 +87,16 @@ class equipmentFix extends React.Component {
                          console.log('onTabClick', index, tab);
                          switch(index) {
                               case 0:
-                              // dispatch({type:'equipmentFix/getfixlog'})
+                              // dispatch({type:'deviceFix/getfixlog'})
                               break;
                               case 1:
-                              // dispatch({type:'equipmentFix/gethistory'})
+                              // dispatch({type:'deviceFix/gethistory'})
                               break;
                               case 2:
-                              // dispatch({type:'equipmentFix/getspStore'})
+                              // dispatch({type:'deviceFix/getspStore'})
                               break;
                               case 3:
-                              // dispatch({type:'equipmentFix/getfaq'})
+                              // dispatch({type:'deviceFix/getfaq'})
                               break;
                          }
                           
@@ -133,4 +133,4 @@ class equipmentFix extends React.Component {
 
 
 
-export default (connect(({})=>({}))(equipmentFix));
+export default (connect(({})=>({}))(DeviceFix));

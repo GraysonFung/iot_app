@@ -16,17 +16,17 @@ const Brief = Item.Brief;
 
 
 
-class equipmentFixList extends React.Component {
+class DeviceMaintenanceList extends React.Component {
 
 	constructor(props) {
 		super(props);
-		if(this.props.equipmentFixList.haveInit){
+		if(this.props.deviceMaintenanceList.haveInit){
 			console.log('防止重复初始化')
 			return
 		}
 		
 		this.props.dispatch({
-  			type:'equipmentFixList/updateState',
+  			type:'deviceMaintenanceList/updateState',
   			payload:{
       			height: document.documentElement.clientHeight * 3 / 4,
   			}
@@ -34,7 +34,7 @@ class equipmentFixList extends React.Component {
 	}
   	componentDidMount(){
   		const hei = document.documentElement.clientHeight - ReactDOM.findDOMNode(this.lv).parentNode.offsetTop;
-  		const { pagination, sort, filter,dataSource,haveInit } = this.props.equipmentFixList
+  		const { pagination, sort, filter,dataSource,haveInit } = this.props.deviceMaintenanceList
     	console.log("渲染alertList")
     	console.log('haveInit',haveInit)
   		if(haveInit){
@@ -42,7 +42,7 @@ class equipmentFixList extends React.Component {
   			return
   		}
   		this.props.dispatch({
-  			type:'equipmentFixList/equipmentFixList',
+  			type:'deviceMaintenanceList/deviceMaintenanceList',
   			payload:{
   				pagination,
   				sort:{
@@ -57,7 +57,7 @@ class equipmentFixList extends React.Component {
   	}
   	onEndReached = (event) => {
   		const hei = document.documentElement.clientHeight - ReactDOM.findDOMNode(this.lv).parentNode.offsetTop;
-  		const { pagination, sort, filter,dataSource,list,Loaded } = this.props.equipmentFixList
+  		const { pagination, sort, filter,dataSource,list,Loaded } = this.props.deviceMaintenanceList
     	// console.log('reach end', event);
     	// console.log('pagination',pagination);
 
@@ -67,7 +67,7 @@ class equipmentFixList extends React.Component {
     	}
 
       	this.props.dispatch({
-  			type:'equipmentFixList/equipmentFixList',
+  			type:'deviceMaintenanceList/deviceMaintenanceList',
   			payload:{
   				pagination:{
   					...pagination,
@@ -87,7 +87,7 @@ class equipmentFixList extends React.Component {
 	render(){
 
 		const thumbIcon=require('../../assets/icon/dpred/icon-设备报警.png');
-		const {dispatch,equipmentFixList}=this.props
+		const {dispatch,deviceMaintenanceList}=this.props
 
 		const separator = (sectionID, rowID) => (
 				<div
@@ -107,7 +107,7 @@ class equipmentFixList extends React.Component {
     	  return (
 					<List  className="my-list" key={rowID}>
 						<Item extra={moment(rowData.time).fromNow()} 
-							onClick={() => {dispatch(routerRedux.push({pathname:`/equipmentFix` }))}}
+							onClick={() => {dispatch(routerRedux.push({pathname:`/deviceMaintenance` }))}}
 							align="middle" thumb={thumbIcon} arrow="horizontal" multipleLine>
 								设备：{rowData.name}
 						<Brief>编号：{rowData.code}</Brief>
@@ -118,13 +118,13 @@ class equipmentFixList extends React.Component {
 
 		return(
 			<div style={{marginTop:'0.45rem'}}>
-			<NavBar>设备维修</NavBar>
+			<NavBar>设备保养</NavBar>
 			<ListView
 			ref={el => this.lv = el}
-			dataSource={equipmentFixList.dataSource}
+			dataSource={deviceMaintenanceList.dataSource}
 			renderHeader={() => <span></span>}
 			renderFooter={() => (<div style={{ padding: 30, textAlign: 'center' }}>
-				{this.props.equipmentFixList.Loaded ? '没有更多了' : '加载中...'}
+				{this.props.deviceMaintenanceList.Loaded ? '没有更多了' : '加载中...'}
 				</div>)}
 			renderSectionHeader={sectionData => (
 				<div>{`第${sectionData.split(' ')[1]}页`}</div>
@@ -133,7 +133,7 @@ class equipmentFixList extends React.Component {
 			renderRow={row}
 			renderSeparator={separator}
 			style={{
-				height: this.props.equipmentFixList.height,
+				height: this.props.deviceMaintenanceList.height,
 				overflow: 'auto',
 				width:'100%'
 			}}
@@ -155,4 +155,4 @@ class equipmentFixList extends React.Component {
 
 
 
-export default withRouter(connect(({equipmentFixList})=>({equipmentFixList}))(equipmentFixList));
+export default withRouter(connect(({deviceMaintenanceList})=>({deviceMaintenanceList}))(DeviceMaintenanceList));

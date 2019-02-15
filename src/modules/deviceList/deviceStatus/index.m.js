@@ -96,7 +96,7 @@ const delay = (ms) => new Promise((resolve) => {
 
 export default modelExtend(listModel,{
 
-  namespace: 'equipmentStatus',
+  namespace: 'deviceStatus',
 
   state: {
     name:'',

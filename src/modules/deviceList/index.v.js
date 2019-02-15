@@ -16,17 +16,16 @@ const Brief = Item.Brief;
 
 
 
-class equipmentList extends React.Component {
+class DeviceList extends React.Component {
 
 	constructor(props) {
 		super(props);
-		if(this.props.equipmentList.haveInit){
-			console.log('防止重复初始化')
+		if(this.props.deviceList.haveInit){
 			return
 		}
 		
 		this.props.dispatch({
-  			type:'equipmentList/updateState',
+  			type:'deviceList/updateState',
   			payload:{
       			height: document.documentElement.clientHeight * 3 / 4,
 
@@ -35,15 +34,12 @@ class equipmentList extends React.Component {
 	}
   	componentDidMount(){
   		const hei = document.documentElement.clientHeight - ReactDOM.findDOMNode(this.lv).parentNode.offsetTop;
-  		const { pagination, sort, filter,dataSource,haveInit } = this.props.equipmentList
-    	console.log("渲染alertList")
-    	console.log('haveInit',haveInit)
+  		const { pagination, sort, filter,dataSource,haveInit } = this.props.deviceList
   		if(haveInit){
-  			console.log('防止重复初始化渲染')
   			return
   		}
   		this.props.dispatch({
-  			type:'equipmentList/equipmentList',
+  			type:'deviceList/deviceList',
   			payload:{
   				pagination,
   				sort:{
@@ -58,17 +54,16 @@ class equipmentList extends React.Component {
   	}
   	onEndReached = (event) => {
   		const hei = document.documentElement.clientHeight - ReactDOM.findDOMNode(this.lv).parentNode.offsetTop;
-  		const { pagination, sort, filter,dataSource,list,Loaded } = this.props.equipmentList
+  		const { pagination, sort, filter,dataSource,list,Loaded } = this.props.deviceList
     	console.log('reach end', event);
     	// console.log('pagination',pagination);
 
     	if(Loaded){
-    		console.log("没有更多了,Loaded",Loaded)
     		return
     	}
 
       	this.props.dispatch({
-  			type:'equipmentList/equipmentList',
+  			type:'deviceList/deviceList',
   			payload:{
   				pagination:{
   					...pagination,
@@ -88,7 +83,7 @@ class equipmentList extends React.Component {
 	render(){
 
 		const thumbIcon=require('../../assets/5.png');
-		const {dispatch,equipmentList}=this.props
+		const {dispatch,deviceList}=this.props
 
 
 		const separator = (sectionID, rowID) => (
@@ -109,10 +104,10 @@ class equipmentList extends React.Component {
     	  return (
 					<List  className="my-list" key={rowID}>
 						<Item extra={moment(rowData.creationTime).fromNow()} 
-							onClick={() => {dispatch(routerRedux.push({pathname:`/equipmentStatus`}))}}
+							onClick={() => {dispatch(routerRedux.push({pathname:`/deviceStatus`}))}}
 							align="middle" thumb={thumbIcon } arrow="horizontal" multipleLine>
-								设备1{rowData.equipmentName}
-						<Brief>{rowData.equipmentBrand}</Brief>
+								{rowData.name}
+						<Brief>{rowData.deviceBrand}</Brief>
 						</Item>
 					</List>
     	  );
@@ -123,10 +118,10 @@ class equipmentList extends React.Component {
 			<NavBar>应用</NavBar>
 			<ListView
 			ref={el => this.lv = el}
-			dataSource={equipmentList.dataSource}
-			renderHeader={() => <span>假装这里有个搜索框</span>}
+			dataSource={deviceList.dataSource}
+			renderHeader={() => <span>搜索框</span>}
 			renderFooter={() => (<div style={{ padding: 30, textAlign: 'center' }}>
-				{this.props.equipmentList.Loaded ? '没有更多了' : '加载中...'}
+				{this.props.deviceList.Loaded ? '没有更多了' : '加载中...'}
 				</div>)}
 			renderSectionHeader={sectionData => (
 				<div>{`第${sectionData.split(' ')[1]}页`}</div>
@@ -135,7 +130,7 @@ class equipmentList extends React.Component {
 			renderRow={row}
 			renderSeparator={separator}
 			style={{
-				height: this.props.equipmentList.height,
+				height: this.props.deviceList.height,
 				overflow: 'auto',
 				width:'100%'
 			}}
@@ -157,4 +152,4 @@ class equipmentList extends React.Component {
 
 
 
-export default withRouter(connect(({equipmentList})=>({equipmentList}))(equipmentList));
+export default withRouter(connect(({deviceList})=>({deviceList}))(DeviceList));

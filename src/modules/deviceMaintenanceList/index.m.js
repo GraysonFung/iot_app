@@ -1,11 +1,11 @@
 import modelExtend from 'dva-model-extend'
 import {listModel} from '../common/common'
-// import {getequipmentmaintenanceList} from '../services/getequipmentmaintenanceList'
+// import {getDeviceMaintenanceList} from '../services/getDeviceMaintenanceList'
 import {ListView} from 'antd-mobile'
 
 export default modelExtend(listModel,{
 
-  namespace: 'equipmentFixList',
+  namespace: 'deviceMaintenanceList',
   state: {
   	dataSource:new ListView.DataSource({
   					getRowData:(dataBlob, sectionID, rowID) => dataBlob[rowID],
@@ -26,8 +26,8 @@ export default modelExtend(listModel,{
   },
 
   effects: {
-    *equipmentFixList({ payload }, { call, put,select }) {  // eslint-disable-line
-    	const Loaded=yield select(state=>state.equipmentFixList.Loaded)
+    *deviceMaintenanceList({ payload }, { call, put,select }) {  // eslint-disable-line
+    	const Loaded=yield select(state=>state.deviceMaintenanceList.Loaded)
     	if(Loaded){
     		console.log("拦截请求")
     		return
@@ -54,12 +54,12 @@ export default modelExtend(listModel,{
 
       }
 
-    	const dataSource = yield select(state => state.equipmentFixList.dataSource) 
-    	const current = yield select(state => state.equipmentFixList.pagination.current) 
-    	const pageSize = yield select(state => state.equipmentFixList.pagination.pageSize) 
-    	const dataBlobs = yield select(state => state.equipmentFixList.dataBlobs) 
-    	const sectionIDs = yield select(state => state.equipmentFixList.sectionIDs) 
-    	const rowIDs = yield select(state => state.equipmentFixList.rowIDs) 
+    	const dataSource = yield select(state => state.deviceMaintenanceList.dataSource) 
+    	const current = yield select(state => state.deviceMaintenanceList.pagination.current) 
+    	const pageSize = yield select(state => state.deviceMaintenanceList.pagination.pageSize) 
+    	const dataBlobs = yield select(state => state.deviceMaintenanceList.dataBlobs) 
+    	const sectionIDs = yield select(state => state.deviceMaintenanceList.sectionIDs) 
+    	const rowIDs = yield select(state => state.deviceMaintenanceList.rowIDs) 
     	
 
     	if(res.success){
