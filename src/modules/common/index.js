@@ -1,8 +1,8 @@
 import modelExtend from "dva-model-extend";
-import { iotPlatform } from "../../constants";
+
 import * as services from "../../services";
 
-const { ROOTPATH } = iotPlatform;
+const ROOTPATH  = "platform";
 
 // ------------- 基础model --------------
 export const modelState = () => {

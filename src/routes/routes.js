@@ -41,14 +41,19 @@ export default [
       component:()=>import('../modules/deviceAlertList/deviceAlert/faq/index.v')
     },
     {
-      path:'/deviceFixList',
-      models:()=>[import('../modules/deviceFixList/index.m')],
-      component:()=>import('../modules/deviceFixList/index.v')
+      path:'/repairList',
+      models:()=>[import('../modules/repairList/index.m')],
+      component:()=>import('../modules/repairList/index.v')
+    },
+    {
+      path:'/addRepairRecord',
+      models:()=>[import('../modules/repairList/addRepairRecord/index.m')],
+      component:()=>import('../modules/repairList/addRepairRecord/index.v')
     },
     {
       path:'/deviceFix',
       models:()=>[],
-      component:()=>import('../modules/deviceFixList/deviceFix/index.v')
+      component:()=>import('../modules/repairList/deviceFix/index.v')
     },
     {
       path:'/deviceMaintenanceList',
@@ -85,6 +90,6 @@ export default [
       path:'/',
       models:()=>[],
       component:()=>import('../modules/home/index.v')
-    },
+    }, 
 
 ];

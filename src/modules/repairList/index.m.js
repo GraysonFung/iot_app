@@ -5,7 +5,7 @@ import {ListView} from 'antd-mobile'
 
 export default modelExtend(listModel,{
 
-  namespace: 'deviceFixList',
+  namespace: 'repairList',
   state: {
   	dataSource:new ListView.DataSource({
   					getRowData:(dataBlob, sectionID, rowID) => dataBlob[rowID],
@@ -27,8 +27,8 @@ export default modelExtend(listModel,{
   },
 
   effects: {
-    *deviceFixList({ payload }, { call, put,select }) {  // eslint-disable-line
-    	const Loaded=yield select(state=>state.deviceFixList.Loaded)
+    *repairList({ payload }, { call, put,select }) {  // eslint-disable-line
+    	const Loaded=yield select(state=>state.repairList.Loaded)
     	if(Loaded){
     		console.log("拦截请求")
     		return
@@ -55,12 +55,12 @@ export default modelExtend(listModel,{
 
       }
 
-    	const dataSource = yield select(state => state.deviceFixList.dataSource) 
-    	const current = yield select(state => state.deviceFixList.pagination.current) 
-    	const pageSize = yield select(state => state.deviceFixList.pagination.pageSize) 
-    	const dataBlobs = yield select(state => state.deviceFixList.dataBlobs) 
-    	const sectionIDs = yield select(state => state.deviceFixList.sectionIDs) 
-    	const rowIDs = yield select(state => state.deviceFixList.rowIDs) 
+    	const dataSource = yield select(state => state.repairList.dataSource) 
+    	const current = yield select(state => state.repairList.pagination.current) 
+    	const pageSize = yield select(state => state.repairList.pagination.pageSize) 
+    	const dataBlobs = yield select(state => state.repairList.dataBlobs) 
+    	const sectionIDs = yield select(state => state.repairList.sectionIDs) 
+    	const rowIDs = yield select(state => state.repairList.rowIDs) 
     	
 
     	if(res.success){

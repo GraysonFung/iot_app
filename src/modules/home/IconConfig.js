@@ -72,7 +72,7 @@ exports.dpred={
             {
             icon: require("../../assets/icon/dpred/icon-维修.png"),
             text: `设备维修`,
-            path:'/deviceFixList'
+            path:'/repairList'
             },
             {
             icon: require("../../assets/icon/dpred/icon-保养.png"),

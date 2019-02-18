@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
-import {  List, Icon, ListView } from 'antd-mobile'
+import {  List, Icon, ListView,Button,WhiteSpace } from 'antd-mobile'
 import {routerRedux,withRouter} from 'dva/router'
 import moment from 'moment'
 import NavBar from '../../components/navBar'
@@ -16,17 +16,17 @@ const Brief = Item.Brief;
 
 
 
-class  DeviceFixList extends React.Component {
+class  RepairList extends React.Component {
 
 	constructor(props) {
 		super(props);
-		if(this.props.deviceFixList.haveInit){
+		if(this.props.repairList.haveInit){
 			console.log('防止重复初始化')
 			return
 		}
 		
 		this.props.dispatch({
-  			type:'deviceFixList/updateState',
+  			type:'repairList/updateState',
   			payload:{
       			height: document.documentElement.clientHeight * 3 / 4,
   			}
@@ -34,7 +34,7 @@ class  DeviceFixList extends React.Component {
 	}
   	componentDidMount(){
   		const hei = document.documentElement.clientHeight - ReactDOM.findDOMNode(this.lv).parentNode.offsetTop;
-  		const { pagination, sort, filter,dataSource,haveInit } = this.props.deviceFixList
+  		const { pagination, sort, filter,dataSource,haveInit } = this.props.repairList
     	console.log("渲染alertList")
     	console.log('haveInit',haveInit)
   		if(haveInit){
@@ -42,7 +42,7 @@ class  DeviceFixList extends React.Component {
   			return
   		}
   		this.props.dispatch({
-  			type:'deviceFixList/deviceFixList',
+  			type:'repairList/repairList',
   			payload:{
   				pagination,
   				sort:{
@@ -57,7 +57,7 @@ class  DeviceFixList extends React.Component {
   	}
   	onEndReached = (event) => {
   		const hei = document.documentElement.clientHeight - ReactDOM.findDOMNode(this.lv).parentNode.offsetTop;
-  		const { pagination, sort, filter,dataSource,list,Loaded } = this.props.deviceFixList
+  		const { pagination, sort, filter,dataSource,list,Loaded } = this.props.repairList
     	// console.log('reach end', event);
     	// console.log('pagination',pagination);
 
@@ -67,7 +67,7 @@ class  DeviceFixList extends React.Component {
     	}
 
       	this.props.dispatch({
-  			type:'deviceFixList/deviceFixList',
+  			type:'repairList/repairList',
   			payload:{
   				pagination:{
   					...pagination,
@@ -82,12 +82,20 @@ class  DeviceFixList extends React.Component {
   			}
   		})
 
-    }
+		}
+		handleToAdd=()=>{
+			this.props.dispatch({
+				type:'app/goPage',
+				payload:{
+					pathname:'/addRepairRecord'
+				}
+			})
+		}
 
 	render(){
 
 		const thumbIcon=require('../../assets/icon/dpred/icon-设备报警.png');
-		const {dispatch,deviceFixList}=this.props
+		const {dispatch,repairList}=this.props
 
 		const separator = (sectionID, rowID) => (
 				<div
@@ -118,13 +126,15 @@ class  DeviceFixList extends React.Component {
 
 		return(
 			<div style={{marginTop:'0.45rem'}}>
-			<NavBar>设备维修</NavBar>
+			<NavBar>维修历史</NavBar>
+			<WhiteSpace />
+			<Button type="primary" style={{width:"80%",margin:"auto"}} onClick={this.handleToAdd}>新增报修+</Button>
 			<ListView
 			ref={el => this.lv = el}
-			dataSource={deviceFixList.dataSource}
+			dataSource={repairList.dataSource}
 			renderHeader={() => <span></span>}
 			renderFooter={() => (<div style={{ padding: 30, textAlign: 'center' }}>
-				{this.props.deviceFixList.Loaded ? '没有更多了' : '加载中...'}
+				{this.props.repairList.Loaded ? '没有更多了' : '加载中...'}
 				</div>)}
 			renderSectionHeader={sectionData => (
 				<div>{`第${sectionData.split(' ')[1]}页`}</div>
@@ -133,7 +143,7 @@ class  DeviceFixList extends React.Component {
 			renderRow={row}
 			renderSeparator={separator}
 			style={{
-				height: this.props.deviceFixList.height,
+				height: this.props.repairList.height,
 				overflow: 'auto',
 				width:'100%'
 			}}
@@ -155,4 +165,4 @@ class  DeviceFixList extends React.Component {
 
 
 
-export default withRouter(connect(({deviceFixList})=>({deviceFixList}))( DeviceFixList));
+export default withRouter(connect(({repairList,app})=>({repairList,app}))( RepairList));

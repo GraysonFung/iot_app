@@ -1,5 +1,5 @@
-import NavBar from './NavBar'
-import TapBar from './TapBar'
+import NavBar from './navBar'
+import TapBar from './tapBar'
 import Error from './Error'
 
 
