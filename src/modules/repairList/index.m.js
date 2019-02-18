@@ -1,11 +1,11 @@
 import modelExtend from 'dva-model-extend'
 import {listModel} from '../common/common'
-// import {getequipmentmaintenanceList} from '../services/getequipmentmaintenanceList'
+// import {getDeviceMaintenanceList} from '../services/getDeviceMaintenanceList'
 import {ListView} from 'antd-mobile'
 
 export default modelExtend(listModel,{
 
-  namespace: 'equipmentMaintenanceList',
+  namespace: 'repairList',
   state: {
   	dataSource:new ListView.DataSource({
   					getRowData:(dataBlob, sectionID, rowID) => dataBlob[rowID],
@@ -16,7 +16,8 @@ export default modelExtend(listModel,{
   	dataBlobs: {},
   	sectionIDs: [],
   	rowIDs:[],
-  	Loaded:false,
+		Loaded:false,
+		
   	haveInit:false,
 
   },
@@ -26,8 +27,8 @@ export default modelExtend(listModel,{
   },
 
   effects: {
-    *equipmentMaintenanceList({ payload }, { call, put,select }) {  // eslint-disable-line
-    	const Loaded=yield select(state=>state.equipmentMaintenanceList.Loaded)
+    *repairList({ payload }, { call, put,select }) {  // eslint-disable-line
+    	const Loaded=yield select(state=>state.repairList.Loaded)
     	if(Loaded){
     		console.log("拦截请求")
     		return
@@ -54,12 +55,12 @@ export default modelExtend(listModel,{
 
       }
 
-    	const dataSource = yield select(state => state.equipmentMaintenanceList.dataSource) 
-    	const current = yield select(state => state.equipmentMaintenanceList.pagination.current) 
-    	const pageSize = yield select(state => state.equipmentMaintenanceList.pagination.pageSize) 
-    	const dataBlobs = yield select(state => state.equipmentMaintenanceList.dataBlobs) 
-    	const sectionIDs = yield select(state => state.equipmentMaintenanceList.sectionIDs) 
-    	const rowIDs = yield select(state => state.equipmentMaintenanceList.rowIDs) 
+    	const dataSource = yield select(state => state.repairList.dataSource) 
+    	const current = yield select(state => state.repairList.pagination.current) 
+    	const pageSize = yield select(state => state.repairList.pagination.pageSize) 
+    	const dataBlobs = yield select(state => state.repairList.dataBlobs) 
+    	const sectionIDs = yield select(state => state.repairList.sectionIDs) 
+    	const rowIDs = yield select(state => state.repairList.rowIDs) 
     	
 
     	if(res.success){

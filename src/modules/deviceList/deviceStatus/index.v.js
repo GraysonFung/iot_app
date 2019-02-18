@@ -41,7 +41,7 @@ function getRecord(pointValue) {
 }
 
 
-class equipmentStatus extends React.Component {
+class EquipmentStatus extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = {
@@ -55,7 +55,7 @@ class equipmentStatus extends React.Component {
           socket.on('message',(data)=>{
              // console.log(data)
              dispatch({
-                type:'equipmentStatus/updateState',
+                type:'deviceStatus/updateState',
                 payload:{
                    ...data
                     }
@@ -70,8 +70,8 @@ class equipmentStatus extends React.Component {
 
   	}
 	render(){
-          const {dispatch,equipmentStatus}=this.props
-          const {name,code,status,nodes,modalVisible,modalNum,chart,chartSwitch}=equipmentStatus
+          const {dispatch,deviceStatus}=this.props
+          const {name,code,status,nodes,modalVisible,modalNum,chart,chartSwitch}=deviceStatus
           const pointValue=nodes[modalNum]?nodes[modalNum].value:false
           // console.log("chart",chart)
           // console.log("chartSwitch",chartSwitch)
@@ -121,7 +121,7 @@ class equipmentStatus extends React.Component {
                                         arrow="horizontal"
                                         onClick={
                                              () => {
-                                                       dispatch({type:'equipmentStatus/drawChart',payload:{modalVisible:true,modalNum:index}});
+                                                       dispatch({type:'deviceStatus/drawChart',payload:{modalVisible:true,modalNum:index}});
                                                   }
                                         }
                                         key={item.address}
@@ -135,7 +135,7 @@ class equipmentStatus extends React.Component {
                          visible={modalVisible}
                          transparent
                          title={nodes[modalNum]?nodes[modalNum].name:'加载中。。。'}
-                         footer={[{ text: '关闭', onPress: () => { dispatch({type:'equipmentStatus/updateState',payload:{modalVisible:false,chartSwitch:false}})  } }]}
+                         footer={[{ text: '关闭', onPress: () => { dispatch({type:'deviceStatus/updateState',payload:{modalVisible:false,chartSwitch:false}})  } }]}
                          afterClose={() => { }}
                          >   
                               <List>
@@ -156,4 +156,4 @@ class equipmentStatus extends React.Component {
 
 
 
-export default connect(({equipmentStatus})=>({equipmentStatus}))(equipmentStatus);
+export default connect(({deviceStatus})=>({deviceStatus}))(EquipmentStatus);

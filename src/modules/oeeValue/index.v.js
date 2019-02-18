@@ -3,7 +3,8 @@ import React from 'react';
 import { List, InputItem, WhiteSpace } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import axios from 'axios';
-
+import TabBar from '../../components/tapBar'
+import NavBar from '../../components/navBar'
 
 const Item = List.Item;
 
@@ -18,73 +19,74 @@ class DeviceOeeValue extends Component{
     render(){
         const { getFieldProps } = this.props.form;
         return(
-            <div>
-                <List renderHeader={() => '数据输入'}>
-                <InputItem
-                    {...getFieldProps('offPlanTime')}
-                    // onChange={()=>{console.log("form",this.props.form.getFieldValue)}}
-                    type="digit"
-                    labelNumber="8"
-                    placeholder="  请输入数据(20±)"
-                    // ref={'offPlanTime'}
-                >计划停止时间(min)：</InputItem>
-                
-                <InputItem
-                    // value = {this.state.oeeValue.beatPlan}
-                    {...getFieldProps('beatPlan')}
-
-                    clear
-                    type="digit"
-                    labelNumber="8"
-                    placeholder="  请输入数据(1.2±)"
-                    // ref={'beatPlan'}
-                >计划节拍(个/min)：</InputItem>
-                
-                <InputItem
-                    // value = {this.state.oeeValue.output}
-                    {...getFieldProps('output')}
-                    clear
-                    type="digit"
-                    labelNumber="8"
-                    placeholder="  请输入数据"
-                    // ref={'output'}
-                >产量(个)：</InputItem>
-                
-                <InputItem
-                    // value = {this.state.oeeValue.goodNums}
-                    {...getFieldProps('goodNums')}
+            <TabBar>
+                <NavBar>设备OEE</NavBar>
+                <div style={{marginTop:'0.45rem'}}>
+                    <List renderHeader={() => '数据输入'}>
+                    <InputItem
+                        {...getFieldProps('offPlanTime')}
+                        // onChange={()=>{console.log("form",this.props.form.getFieldValue)}}
+                        type="digit"
+                        labelNumber="8"
+                        placeholder="  请输入数据(20±)"
+                        // ref={'offPlanTime'}
+                    >计划停止时间(min)：</InputItem>
                     
-                    clear
-                    type="digit"
-                    labelNumber="8"
-                    placeholder="  请输入数据"
-                    // ref={'goodNums'}
-                >良品数(个)：</InputItem>
+                    <InputItem
+                        // value = {this.state.oeeValue.beatPlan}
+                        {...getFieldProps('beatPlan')}
 
-                <List.Item>
-                    <div
-                    style={{ width: '100%', color: '#108ee9', textAlign: 'center' }}
-                    onClick={this.handleClick}
-                    >
-                    统计
-                    </div>
-                </List.Item>
-                </List>
-        
-                <WhiteSpace />
-                <WhiteSpace />
+                        clear
+                        type="digit"
+                        labelNumber="8"
+                        placeholder="  请输入数据(1.2±)"
+                        // ref={'beatPlan'}
+                    >计划节拍(个/min)：</InputItem>
+                    
+                    <InputItem
+                        // value = {this.state.oeeValue.output}
+                        {...getFieldProps('output')}
+                        clear
+                        type="digit"
+                        labelNumber="8"
+                        placeholder="  请输入数据"
+                        // ref={'output'}
+                    >产量(个)：</InputItem>
+                    
+                    <InputItem
+                        // value = {this.state.oeeValue.goodNums}
+                        {...getFieldProps('goodNums')}
+                        
+                        clear
+                        type="digit"
+                        labelNumber="8"
+                        placeholder="  请输入数据"
+                        // ref={'goodNums'}
+                    >良品数(个)：</InputItem>
 
-                <List renderHeader={() => 'OEE统计结果如下：'} className="oeeValue">
-                    <Item extra={this.state.oeeValue.runRatio>0?(this.state.oeeValue.runRatio*100).toFixed(2)+"%":""}>时间开动率(%)</Item>
-                    <Item extra={this.state.oeeValue.beatRatio>0?(this.state.oeeValue.beatRatio*100).toFixed(2)+"%":""}>速度开动(%)</Item>
-                    <Item extra={this.state.oeeValue.preRunRatio>0?(this.state.oeeValue.preRunRatio*100).toFixed(2)+"%":""}>净开动率(%)</Item>
-                    <Item extra={this.state.oeeValue.preRunPlanRatio>0?(this.state.oeeValue.preRunPlanRatio*100).toFixed(2)+"%":""}>性能开动率(%)</Item>
-                    <Item extra={this.state.oeeValue.goodNumsRatio>0?(this.state.oeeValue.goodNumsRatio*100).toFixed(2)+"%":""}>良品率(%)</Item>
-                    <Item extra={this.state.oeeValue.deviceMultipleRunRatio>0?(this.state.oeeValue.deviceMultipleRunRatio*100).toFixed(2)+"%":""}>设备综合开动率(%)</Item>
-                </List>
-        
-    
-          </div>
+                    <List.Item>
+                        <div
+                        style={{ width: '100%', color: '#108ee9', textAlign: 'center' }}
+                        onClick={this.handleClick}
+                        >
+                        统计
+                        </div>
+                    </List.Item>
+                    </List>
+            
+                    <WhiteSpace />
+                    <WhiteSpace />
+
+                    <List renderHeader={() => 'OEE统计结果如下：'} className="oeeValue">
+                        <Item extra={this.state.oeeValue.runRatio>0?(this.state.oeeValue.runRatio*100).toFixed(2)+"%":""}>时间开动率(%)</Item>
+                        <Item extra={this.state.oeeValue.beatRatio>0?(this.state.oeeValue.beatRatio*100).toFixed(2)+"%":""}>速度开动(%)</Item>
+                        <Item extra={this.state.oeeValue.preRunRatio>0?(this.state.oeeValue.preRunRatio*100).toFixed(2)+"%":""}>净开动率(%)</Item>
+                        <Item extra={this.state.oeeValue.preRunPlanRatio>0?(this.state.oeeValue.preRunPlanRatio*100).toFixed(2)+"%":""}>性能开动率(%)</Item>
+                        <Item extra={this.state.oeeValue.goodNumsRatio>0?(this.state.oeeValue.goodNumsRatio*100).toFixed(2)+"%":""}>良品率(%)</Item>
+                        <Item extra={this.state.oeeValue.deviceMultipleRunRatio>0?(this.state.oeeValue.deviceMultipleRunRatio*100).toFixed(2)+"%":""}>设备综合开动率(%)</Item>
+                    </List>    
+                </div>
+            </TabBar>
         )
     }
 

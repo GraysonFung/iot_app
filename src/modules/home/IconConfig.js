@@ -28,7 +28,7 @@ exports.pink={
             {
             icon: require("../../assets/icon/监控.png"),
             text: `设备监控`,
-            path:'/equipmentList'
+            path:'/deviceList'
             },
             {
             icon: require("../../assets/icon/首页-icon-故障报警@2x.png"),
@@ -72,22 +72,22 @@ exports.dpred={
             {
             icon: require("../../assets/icon/dpred/icon-维修.png"),
             text: `设备维修`,
-            path:'/equipmentFixList'
+            path:'/repairList'
             },
             {
             icon: require("../../assets/icon/dpred/icon-保养.png"),
             text: `设备保养`,
-            path:'/equipMaintenanceList'
+            path:'/deviceMaintenanceList'
             },
             {
             icon: require("../../assets/icon/dpred/icon-能耗分析.png"),
             text: `能耗分析`,
-            path:'energyAnalysisList'
+            path:'/energyAnalysisList'
             },
             {
             icon: require("../../assets/icon/dpred/监控.png"),
             text: `设备监控`,
-            path:'/equipmentList'
+            path:'/deviceList'
 
             },
             {

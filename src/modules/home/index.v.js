@@ -4,7 +4,7 @@ import { Flex, WhiteSpace, List } from 'antd-mobile';
 import {withRouter,routerRedux} from 'dva/router'
 import style from './index2.less'
 import './index.less'
-import TabBar from '../../components/tapBar'
+import TapBar from '../../components/tapBar'
 import NavBar from '../../components/navBar'
 import { Grid } from 'antd-mobile';
 import IconConfig from './IconConfig'
@@ -28,7 +28,7 @@ class FlexExample extends  React.Component {
       
 
     return(
-        <TabBar>
+        <TapBar>
           <NavBar>应用</NavBar>
           <div className={style.pageContent}>
                 <List  className="my-list">
@@ -54,7 +54,7 @@ class FlexExample extends  React.Component {
           </div>
 
 
-        </TabBar>
+        </TapBar>
       )
   }
 }

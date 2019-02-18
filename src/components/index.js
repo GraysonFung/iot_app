@@ -1,10 +1,10 @@
-import NavBar from './App'
-import TapBar from './Error'
-
+import NavBar from './navBar'
+import TapBar from './tapBar'
+import Error from './Error'
 
 
 export {
     NavBar,
-    NavBar,
-
+    TapBar,
+    Error
 }

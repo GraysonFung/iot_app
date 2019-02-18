@@ -41,24 +41,29 @@ export default [
       component:()=>import('../modules/deviceAlertList/deviceAlert/faq/index.v')
     },
     {
-      path:'/equipmentFixList',
-      models:()=>[import('../modules/equipmentFixList/index.m')],
-      component:()=>import('../modules/equipmentFixList/index.v')
+      path:'/repairList',
+      models:()=>[import('../modules/repairList/index.m')],
+      component:()=>import('../modules/repairList/index.v')
     },
     {
-      path:'/equipmentFix',
+      path:'/addRepairRecord',
+      models:()=>[import('../modules/repairList/addRepairRecord/index.m')],
+      component:()=>import('../modules/repairList/addRepairRecord/index.v')
+    },
+    {
+      path:'/deviceFix',
       models:()=>[],
-      component:()=>import('../modules/equipmentFixList/equipmentFix/index.v')
+      component:()=>import('../modules/repairList/deviceFix/index.v')
     },
     {
-      path:'/equipMaintenanceList',
-      models:()=>[import('../modules/equipMaintenanceList/index.m')],
-      component:()=>import('../modules/equipMaintenanceList/index.v')
+      path:'/deviceMaintenanceList',
+      models:()=>[import('../modules/deviceMaintenanceList/index.m')],
+      component:()=>import('../modules/deviceMaintenanceList/index.v')
     },
     {
-      path:'/equipMaintenance',
-      models:()=>[import('../modules/equipMaintenanceList/equipMaintenance/index.m')],
-      component:()=>import('../modules/equipMaintenanceList/equipMaintenance/index.v')
+      path:'/deviceMaintenance',
+      models:()=>[import('../modules/deviceMaintenanceList/deviceMaintenance/index.m')],
+      component:()=>import('../modules/deviceMaintenanceList/deviceMaintenance/index.v')
     },
     {
       path:'/energyAnalysisList',
@@ -71,20 +76,20 @@ export default [
       component:()=>import('../modules/energyAnalysisList/energyAnalysis/index.v')
     },
     {
-      path:'/equipmentList',
-      models:()=>[import('../modules/equipmentList/index.m')],
-      component:()=>import('../modules/equipmentList/index.v')
+      path:'/deviceList',
+      models:()=>[import('../modules/deviceList/index.m')],
+      component:()=>import('../modules/deviceList/index.v')
     },
     {
-      path:'/equipmentStatus',
-      models:()=>[import('../modules/equipmentList/equipmentStatus/index.m')],
-      component:()=>import('../modules/equipmentList/equipmentStatus/index.v')
+      path:'/deviceStatus',
+      models:()=>[import('../modules/deviceList/deviceStatus/index.m')],
+      component:()=>import('../modules/deviceList/deviceStatus/index.v')
     },     
 
     {
       path:'/',
       models:()=>[],
       component:()=>import('../modules/home/index.v')
-    },
+    }, 
 
 ];

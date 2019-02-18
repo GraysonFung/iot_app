@@ -1,11 +1,11 @@
 import {graphql,makeGraphql} from '../utils'
 const { createPageParams, createSortParams, createInputs } =makeGraphql
 
-export function getEquipmentList(data) {
+export function getDeviceList(data) {
 	const {pagination, sort ,filter} =data
 	return graphql(`
 			query {
-				allIotEquipments(
+				allIotDevices(
 					${createPageParams(pagination)}
 					${createSortParams(sort)}
 
@@ -13,14 +13,14 @@ export function getEquipmentList(data) {
 					totalCount
 					nodes {
 						creationTime
-						equipmentName
-						equipmentBrand
-						equipmentPrice
-						equipmentId
-						equipmentIp
-						equipmentCode
-						equipmentImage
-						equipmentStatus
+						deviceName
+						deviceBrand
+						devicePrice
+						deviceId
+						deviceIp
+						deviceCode
+						deviceImage
+						deviceStatus
 					}
 				}
 			}
@@ -28,7 +28,7 @@ export function getEquipmentList(data) {
 			successTip:true,
 			label:'获取设备列表 ',
 			convertRes(res){
-				return res.allIotEquipments
+				return res.allIotDevices
 			}
 		})
 }
